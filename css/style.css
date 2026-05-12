@@ -369,3 +369,127 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   border: 1px solid #f0e9d8;
 }
+
+/* ==================== RESPONSIVE - MOBILE ==================== */
+@media (max-width: 1024px) {
+  .hero-content h1 { font-size: 5.2rem; }
+  .spot-hero .hero-text h1 { font-size: 3.8rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 1rem 1.2rem;
+  }
+
+  .nav-links {
+    display: none; /* Sẽ hiện lại bằng Hamburger menu */
+    gap: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .hero {
+    height: 85vh;
+    min-height: 520px;
+  }
+
+  .hero-content {
+    margin-left: 5%;
+    padding-right: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 4.2rem;
+  }
+
+  .spot-hero {
+    height: 65vh;
+    min-height: 420px;
+  }
+
+  .spot-hero .hero-text h1 {
+    font-size: 3.2rem;
+  }
+
+  .spot-hero .romaji {
+    font-size: 1.25rem;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+  }
+
+  .spots-grid,
+  .info-grid,
+  .highlights {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .highlight-card,
+  .info-item {
+    padding: 1.6rem;
+  }
+
+  .route-list {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .route-list li {
+    padding: 1rem 0 1rem 2rem;
+    font-size: 1.08rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3.6rem;
+  }
+
+  .spot-hero .hero-text h1 {
+    font-size: 2.85rem;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    padding: 13px 26px;
+    font-size: 1rem;
+  }
+
+  .spots h2,
+  .spot-content h2 {
+    font-size: 2.1rem;
+  }
+
+  .closing {
+    font-size: 1.3rem;
+    padding: 1.8rem 1.5rem;
+    margin: 3rem 0;
+  }
+}
+
+/* Hamburger Menu */
+.hamburger {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary);
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
