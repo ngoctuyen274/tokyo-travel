@@ -682,3 +682,91 @@ body {
     padding: 1rem 1.2rem;
   }
 }
+
+/* ==================== FOOTER ==================== */
+.footer {
+  background: #1c1814;
+  color: #d4c4a8;
+  padding: 5rem 0 3rem;
+  margin-top: 5rem;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.footer-logo-col .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.footer-subtitle {
+  color: #a38b6b;
+  font-size: 1.08rem;
+  margin: 0;
+}
+
+.footer-col h4 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin-bottom: 1.4rem;
+  font-weight: 600;
+}
+
+.footer-col a {
+  display: block;
+  color: #c8b8a0;
+  text-decoration: none;
+  margin-bottom: 0.85rem;
+  transition: all 0.3s;
+}
+
+.footer-col a:hover {
+  color: #fff;
+  padding-left: 6px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #3a3228;
+  padding-top: 2rem;
+  text-align: center;
+  color: #8c7a62;
+  font-size: 0.95rem;
+}
+
+.made-with {
+  margin-top: 0.4rem;
+  color: #b89f7e;
+  font-style: italic;
+}
+
+/* ==================== RESPONSIVE FOOTER ==================== */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .footer-logo-col .footer-logo {
+    font-size: 2.1rem;
+  }
+  
+  .footer {
+    padding: 4rem 0 2.5rem;
+  }
+}
