@@ -81,3 +81,20 @@ function createMobileMenu() {
 createMobileMenu();
 
 console.log("Tokyo Travel Guide loaded successfully ✨");
+
+// Hamburger Menu
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    
+    // Đổi icon hamburger ↔ close
+    if (navLinks.classList.contains('active')) {
+      hamburger.innerHTML = '✕';
+    } else {
+      hamburger.innerHTML = '☰';
+    }
+  });
+}
