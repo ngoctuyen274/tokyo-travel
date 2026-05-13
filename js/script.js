@@ -98,49 +98,93 @@ if (hamburger && navLinks) {
     }
   });
 }
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    if (this.getAttribute('href') === '#spots') {
+      e.preventDefault();
+      document.querySelector('#spots').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+});
 
-// Password Protection
-function checkPassword() {
+// ==================== PASSWORD PROTECTION ====================
+function initPasswordProtection() {
+  const isHomePage = window.location.pathname.endsWith('index.html') || 
+                     window.location.pathname === '/' || 
+                     window.location.pathname.endsWith('/');
+
+  if (!isHomePage) return;
+
   const overlay = document.getElementById('password-overlay');
+  if (!overlay) return;
+
   const input = document.getElementById('password-input');
   const error = document.getElementById('password-error');
   const submitBtn = document.getElementById('password-submit');
 
   const correctPassword = "yobimizu";
 
-  function verify() {
+  function verifyPassword() {
     if (input.value === correctPassword) {
+      overlay.style.transition = 'opacity 0.6s ease';
       overlay.style.opacity = '0';
+      
+      // Lưu tạm thời (session) rằng đã xác thực
+      sessionStorage.setItem('homeAccessGranted', 'true');
+      
       setTimeout(() => {
         overlay.style.display = 'none';
       }, 600);
-      
-      // Lưu trạng thái đã xác thực (tùy chọn)
-      localStorage.setItem('accessGranted', 'true');
     } else {
-      error.textContent = "Mật khẩu không đúng. Vui lòng thử lại.";
-      input.value = '';
+      error.textContent = "パスワードが違います。もう一度お試しください。";
+      input.value = "";
       input.focus();
-      
-      // Hiệu ứng rung
+
       input.style.animation = 'shake 0.4s';
-      setTimeout(() => input.style.animation = '', 400);
+      setTimeout(() => input.style.animation = '', 500);
     }
   }
 
-  submitBtn.addEventListener('click', verify);
-
-  input.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      verify();
-    }
+  submitBtn.addEventListener('click', verifyPassword);
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') verifyPassword();
   });
 
-  // Kiểm tra nếu đã xác thực trước đó
-  if (localStorage.getItem('accessGranted') === 'true') {
+  // ==================== KIỂM TRA ĐIỀU KIỆN ====================
+  const cameFromDetailPage = document.referrer.includes('hie-jinja.html') || 
+                             document.referrer.includes('kyu-yasuda.html') || 
+                             document.referrer.includes('takeshita.html');
+
+  const hasSessionAccess = sessionStorage.getItem('homeAccessGranted') === 'true';
+
+  // Nếu quay lại từ trang chi tiết hoặc đã xác thực trong session hiện tại → bỏ qua
+  if (cameFromDetailPage || hasSessionAccess) {
     overlay.style.display = 'none';
+  } 
+  // Ngược lại (mở mới, reload, mở lại trình duyệt) → yêu cầu password
+  else {
+    overlay.style.display = 'flex';
+    setTimeout(() => {
+      input.focus();
+    }, 400);
   }
 }
 
-// Khởi chạy password protection
-document.addEventListener('DOMContentLoaded', checkPassword);
+// Animation shake
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+  }
+`;
+document.head.appendChild(style);
+
+// Khởi chạy
+document.addEventListener('DOMContentLoaded', initPasswordProtection);
+
+console.log("Tokyo Travel Guide loaded successfully ✨");
