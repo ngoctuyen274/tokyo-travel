@@ -98,3 +98,49 @@ if (hamburger && navLinks) {
     }
   });
 }
+
+// Password Protection
+function checkPassword() {
+  const overlay = document.getElementById('password-overlay');
+  const input = document.getElementById('password-input');
+  const error = document.getElementById('password-error');
+  const submitBtn = document.getElementById('password-submit');
+
+  const correctPassword = "yobimizu";
+
+  function verify() {
+    if (input.value === correctPassword) {
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 600);
+      
+      // Lưu trạng thái đã xác thực (tùy chọn)
+      localStorage.setItem('accessGranted', 'true');
+    } else {
+      error.textContent = "Mật khẩu không đúng. Vui lòng thử lại.";
+      input.value = '';
+      input.focus();
+      
+      // Hiệu ứng rung
+      input.style.animation = 'shake 0.4s';
+      setTimeout(() => input.style.animation = '', 400);
+    }
+  }
+
+  submitBtn.addEventListener('click', verify);
+
+  input.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      verify();
+    }
+  });
+
+  // Kiểm tra nếu đã xác thực trước đó
+  if (localStorage.getItem('accessGranted') === 'true') {
+    overlay.style.display = 'none';
+  }
+}
+
+// Khởi chạy password protection
+document.addEventListener('DOMContentLoaded', checkPassword);
