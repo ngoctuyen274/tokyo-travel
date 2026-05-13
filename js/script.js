@@ -132,7 +132,7 @@ function initPasswordProtection() {
       overlay.style.transition = 'opacity 0.6s ease';
       overlay.style.opacity = '0';
       
-      // Lưu tạm thời (session) rằng đã xác thực
+      // Lưu trạng thái tạm thời trong session
       sessionStorage.setItem('homeAccessGranted', 'true');
       
       setTimeout(() => {
@@ -153,19 +153,21 @@ function initPasswordProtection() {
     if (e.key === 'Enter') verifyPassword();
   });
 
-  // ==================== KIỂM TRA ĐIỀU KIỆN ====================
-  const cameFromDetailPage = document.referrer.includes('hie-jinja.html') || 
-                             document.referrer.includes('kyu-yasuda.html') || 
-                             document.referrer.includes('takeshita.html');
+  // ==================== LOGIC MỚI ====================
+  const referrer = document.referrer || '';
+  const cameFromDetail = referrer.includes('hie-jinja.html') || 
+                         referrer.includes('kyu-yasuda.html') || 
+                         referrer.includes('takeshita.html');
 
   const hasSessionAccess = sessionStorage.getItem('homeAccessGranted') === 'true';
 
-  // Nếu quay lại từ trang chi tiết hoặc đã xác thực trong session hiện tại → bỏ qua
-  if (cameFromDetailPage || hasSessionAccess) {
+  // Nếu quay lại từ trang chi tiết trong cùng session → bỏ qua password
+  if (cameFromDetail && hasSessionAccess) {
     overlay.style.display = 'none';
   } 
-  // Ngược lại (mở mới, reload, mở lại trình duyệt) → yêu cầu password
+  // Các trường hợp khác (mở từ Google, bookmark, reload, mở tab mới...) → yêu cầu password
   else {
+    sessionStorage.removeItem('homeAccessGranted'); // Xóa để buộc nhập lại
     overlay.style.display = 'flex';
     setTimeout(() => {
       input.focus();
