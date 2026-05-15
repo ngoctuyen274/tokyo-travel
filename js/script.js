@@ -1,106 +1,111 @@
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    if (this.getAttribute('href') === '#spots') {
-      e.preventDefault();
-      document.querySelector('#spots').scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  });
-});
+/* =========================================================
+   東京案内書 — Interactions
+   ========================================================= */
 
-// ==================== HAMBURGER MENU ====================
-function initMobileMenu() {
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
+const CORRECT_PASSWORD = "yobimizu";
 
-  if (!hamburger || !navLinks) return;
+/* ---------- Password Gate ---------- */
+function initPasswordGate() {
+  const gate = document.getElementById('password-gate');
+  const main = document.getElementById('main-content');
+  if (!gate || !main) return;
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    
-    if (navLinks.classList.contains('active')) {
-      hamburger.innerHTML = '✕';
-    } else {
-      hamburger.innerHTML = '☰';
-    }
-  });
-}
+  const input = document.getElementById('gate-password');
+  const error = document.getElementById('gate-error');
+  const submit = document.getElementById('gate-submit');
 
-// ==================== PASSWORD PROTECTION ====================
-function initPasswordProtection() {
-  const isHomePage = window.location.pathname.endsWith('index.html') || 
-                     window.location.pathname === '/' || 
-                     window.location.pathname.endsWith('/');
+  // Auto-unlock if granted earlier this session
+  if (sessionStorage.getItem('tokyoAccess') === 'granted') {
+    gate.remove();
+    main.classList.remove('hidden');
+    document.body.style.overflow = '';
+    return;
+  }
 
-  if (!isHomePage) return;
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => input?.focus(), 400);
 
-  const overlay = document.getElementById('password-overlay');
-  if (!overlay) return;
-
-  const input = document.getElementById('password-input');
-  const error = document.getElementById('password-error');
-  const submitBtn = document.getElementById('password-submit');
-
-  const correctPassword = "yobimizu";
-
-  function verifyPassword() {
-    if (input.value === correctPassword) {
-      overlay.style.transition = 'opacity 0.6s ease';
-      overlay.style.opacity = '0';
-      
-      sessionStorage.setItem('homeAccessGranted', 'true');
-      
+  function verify() {
+    const value = (input.value || '').trim().toLowerCase();
+    if (value === CORRECT_PASSWORD) {
+      sessionStorage.setItem('tokyoAccess', 'granted');
+      gate.classList.add('fade-out');
       setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 600);
+        gate.remove();
+        main.classList.remove('hidden');
+        document.body.style.overflow = '';
+      }, 800);
     } else {
-      error.textContent = "パスワードが違います。もう一度お試しください。";
-      input.value = "";
+      error.textContent = "パスワードが違います · Wrong password";
+      input.value = '';
+      input.classList.remove('shake');
+      // force reflow to restart animation
+      void input.offsetWidth;
+      input.classList.add('shake');
       input.focus();
-
-      input.style.animation = 'shake 0.4s';
-      setTimeout(() => input.style.animation = '', 500);
     }
   }
 
-  submitBtn.addEventListener('click', verifyPassword);
-  input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') verifyPassword();
-  });
-
-  const referrer = document.referrer || '';
-  const cameFromDetail = referrer.includes('hie-jinja.html') || 
-                         referrer.includes('kyu-yasuda.html') || 
-                         referrer.includes('takeshita.html');
-
-  const hasSessionAccess = sessionStorage.getItem('homeAccessGranted') === 'true';
-
-  if (cameFromDetail && hasSessionAccess) {
-    overlay.style.display = 'none';
-  } else {
-    sessionStorage.removeItem('homeAccessGranted');
-    overlay.style.display = 'flex';
-    setTimeout(() => input.focus(), 400);
-  }
+  submit?.addEventListener('click', verify);
+  input?.addEventListener('keypress', e => { if (e.key === 'Enter') verify(); });
+  input?.addEventListener('input', () => { if (error.textContent) error.textContent = ''; });
 }
 
-// Animation shake
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-8px); }
-    40%, 80% { transform: translateX(8px); }
+/* ---------- Mobile menu ---------- */
+function initMobileMenu() {
+  const toggle = document.querySelector('.hamburger');
+  const links = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('active');
+    toggle.textContent = links.classList.contains('active') ? '✕' : '☰';
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('active');
+      toggle.textContent = '☰';
+    });
+  });
+}
+
+/* ---------- Reveal on scroll ---------- */
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || !els.length) {
+    els.forEach(el => el.classList.add('visible'));
+    return;
   }
-`;
-document.head.appendChild(style);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => io.observe(el));
+}
 
-// Khởi chạy tất cả
+/* ---------- Subtle parallax for hero ---------- */
+function initHeroParallax() {
+  const bg = document.querySelector('.hero .hero-bg');
+  if (!bg) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      bg.style.transform = `scale(1.05) translateY(${y * 0.25}px)`;
+      ticking = false;
+    });
+    ticking = true;
+  }, { passive: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initPasswordGate();
   initMobileMenu();
-  initPasswordProtection();
+  initReveal();
+  initHeroParallax();
 });
-
-console.log("Tokyo Travel Guide loaded successfully ✨");

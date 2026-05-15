@@ -1,147 +1,330 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="y7uk4CT55xL7NDt7RPCHn3eJYtoaYUUge5u9SjyBNOw" />
-  <title>東京案内書 — Tokyo Travel Guide</title>
+  <meta name="description" content="東京案内書 — Discover the soul of Tokyo. Edo legacy, hidden gardens and Harajuku kawaii culture, curated for 2026.">
+  <meta name="google-site-verification" content="y7uk4CT55xL7NDt7RPCHn3eJYtoaYUUge5u9SjyBNOw">
+  <title>東京案内書 — Tokyo Travel Guide 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo">東京案内書</a>
-      <div class="nav-links">
-        <a href="index.html">ホーム</a>
-        <a href="hie-jinja.html">日枝神社</a>
-        <a href="kyu-yasuda.html">旧安田庭園</a>
-        <a href="takeshita.html">竹下通り</a>
-      </div>
-    </div>
-  </nav>
 
-  <!-- PASSWORD PROTECTION -->
-<div id="password-overlay" class="password-overlay">
-  <div class="password-modal">
-    <h2>パスワード認証</h2>
-    <p>このページは保護されています<br>パスワードを入力してください</p>
-    
-    <input type="password" id="password-input" placeholder="パスワードを入力" autocomplete="off">
-    
-    <button id="password-submit" class="btn">確認する</button>
-    <p id="password-error" class="error-message"></p>
-  </div>
-</div>
-
-  <!-- HERO -->
-  <section class="hero">
-    <img src="assets/hero-tokyo.jpg" alt="Tokyo" class="hero-bg">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="badge">ENJOY YOUR TRIP</div>
-      <h1>TOKYO</h1>
-      <p class="subtitle">東京案内書 — 3つのエリアガイド</p>
-      <p class="desc">歴史・自然・トレンドをめぐる旅へ。</p>
-      <a href="#spots" class="btn">旅をはじめる →</a>
-    </div>
-  </section>
-
-  <!-- Intro Strip -->
-  <section class="intro-strip">
-    <div class="strip-grid">
-      <div class="strip-item"><span class="num">01</span><div><small>歴史</small><div>Edo · 江戸の記憶</div></div></div>
-      <div class="strip-item"><span class="num">02</span><div><small>自然</small><div>Garden · 大名庭園</div></div></div>
-      <div class="strip-item"><span class="num">03</span><div><small>トレンド</small><div>Pop · 原宿カルチャー</div></div></div>
-    </div>
-  </section>
-
-  <!-- Spots-->
-  <section id="spots" class="spots">
-    <div class="container">
-      <h2>めぐる、3つのエリア</h2>
-      <div class="spots-grid">
-        <a href="hie-jinja.html" class="spot-card">
-          <div class="img-wrapper">
-            <img src="assets/hie.jpg" alt="日枝神社">
-            <div class="tag">歴史</div>
-            <div class="number">01</div>
-          </div>
-          <div class="content">
-            <div class="area">赤坂 / AKASAKA</div>
-            <h3>日枝神社</h3>
-            <div class="romaji">HIE JINJA</div>
-            <p>都心にありながら静けさに包まれた神社。縁結び・厄除けのご利益。</p>
-            <span class="link">案内書をひらく →</span>
-          </div>
-        </a>
-
-        <a href="kyu-yasuda.html" class="spot-card">
-          <div class="img-wrapper">
-            <img src="assets/yasuda.jpg" alt="旧安田庭園">
-            <div class="tag">自然</div>
-            <div class="number">02</div>
-          </div>
-          <div class="content">
-            <div class="area">両国 / RYOGOKU</div>
-            <h3>旧安田庭園</h3>
-            <div class="romaji">KYU-YASUDA GARDEN</div>
-            <p>江戸時代の風情を感じる大名庭園。</p>
-            <span class="link">案内書をひらく →</span>
-          </div>
-        </a>
-
-        <a href="takeshita.html" class="spot-card">
-          <div class="img-wrapper">
-            <img src="assets/takeshita.jpg" alt="竹下通り">
-            <div class="tag">トレンド</div>
-            <div class="number">03</div>
-          </div>
-          <div class="content">
-            <div class="area">原宿 / HARAJUKU</div>
-            <h3>竹下通り</h3>
-            <div class="romaji">TAKESHITA STREET</div>
-            <p>原宿のポップカルチャー発信地。かわいい！がいっぱい。</p>
-            <span class="link">案内書をひらく →</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-content">
-      <!-- Cột 1: Logo -->
-      <div class="footer-col footer-logo-col">
-        <a href="index.html" class="footer-logo">東京案内書</a>
-        <p class="footer-subtitle">Tokyo Travel Guide 2026</p>
+  <!-- ============= PASSWORD GATE ============= -->
+  <div id="password-gate" class="password-gate">
+    <div class="gate-content">
+      <div class="gate-logo">
+        <h1>東京案内</h1>
+        <p class="subtitle">Tokyo Guide · 2026</p>
       </div>
 
-      <!-- Cột 2: 探索する -->
-      <div class="footer-col">
-        <h4>探索する</h4>
-        <a href="hie-jinja.html">日枝神社</a>
-        <a href="kyu-yasuda.html">旧安田庭園</a>
-        <a href="takeshita.html">竹下通り</a>
+      <div class="password-card">
+        <h2>ようこそ</h2>
+        <p class="gate-desc">Enter the password to begin your journey.</p>
+
+        <div class="input-group">
+          <input type="password" id="gate-password" placeholder="パスワード · password" autocomplete="off" spellcheck="false">
+          <button id="gate-submit" class="gate-btn" aria-label="Enter">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        <p id="gate-error" class="gate-error" role="alert"></p>
       </div>
 
-      <!-- Cột 3: 東京について -->
-      <div class="footer-col">
-        <h4>東京について</h4>
-        <a href="#">歴史・文化</a>
-        <a href="#">季節のイベント</a>
-        <a href="#">アクセス情報</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 東京案内書 — All Rights Reserved</p>
-      <p class="made-with">Made with ❤️ for those who love Tokyo</p>
+      <div class="gate-footer"><p>Discover the soul of Tokyo</p></div>
     </div>
   </div>
-</footer>
+
+  <!-- ============= MAIN ============= -->
+  <div id="main-content" class="main-content hidden">
+
+    <!-- NAV -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-jp">東京案内書</span>
+          <span class="logo-en">Tokyo Guide</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">物語</a>
+          <a href="#spots">めぐる</a>
+          <a href="#timeline">歴史</a>
+          <a href="#gallery">ギャラリー</a>
+          <a href="#why">東京の魅力</a>
+        </div>
+        <button class="hamburger" aria-label="Menu">☰</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image: url('assets/hero-tokyo.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">TOKYO<span class="accent">.</span></h1>
+        <p class="hero-subtitle">江戸の記憶と未来が交差する街</p>
+        <p class="hero-desc">3つの異なる表情を持つ東京を、深く、美しく巡る旅へ。神社の静けさ、庭園の余白、そして原宿の鼓動。</p>
+        <a href="#spots" class="btn-primary">旅をはじめる <span class="arrow">→</span></a>
+      </div>
+
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- INTRO STRIP -->
+    <section class="intro-strip">
+      <div class="strip-grid">
+        <div class="strip-item">
+          <span class="num">01</span>
+          <div><small>歴史 · History</small><div class="label">日枝神社</div></div>
+        </div>
+        <div class="strip-item">
+          <span class="num">02</span>
+          <div><small>自然 · Nature</small><div class="label">旧安田庭園</div></div>
+        </div>
+        <div class="strip-item">
+          <span class="num">03</span>
+          <div><small>トレンド · Trend</small><div class="label">竹下通りー原宿</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="reveal">
+            <div class="about-eyebrow">— 物語について</div>
+            <h2 class="about-title">A city written in two languages — past and future.</h2>
+            <p class="about-text">東京は矛盾の街です。何百年もの祈りを抱いた神社の隣に、明日のファッションが生まれます。木の鳥居をくぐった先で、ガラスの摩天楼を見上げる。それが東京の日常。</p>
+            <p class="about-text">この案内書は、観光地のリストではありません。3つの場所を通して、東京という街の「呼吸」を感じてもらうための、小さな旅の手引きです。</p>
+            <p class="about-text" style="font-family:'Noto Serif JP',serif; font-style:italic; color:var(--gold); margin-top:1.5rem;">— 急がず、地図を閉じて、歩いてみてください。</p>
+          </div>
+          <div class="about-image reveal">
+            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1200&q=80" alt="Tokyo street at dusk">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPOTS -->
+    <section id="spots" class="spots">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">— Featured</div>
+          <h2>めぐる、3つの東京</h2>
+          <p class="section-sub">それぞれの魅力が詰まった、選び抜かれた3つの場所</p>
+        </div>
+
+        <div class="spots-grid">
+          <a href="hie-jinja.html" class="spot-card reveal">
+            <div class="img-wrapper">
+              <img src="assets/hie.jpg" alt="日枝神社">
+              <div class="tag">歴史 · History</div>
+              <div class="number">01</div>
+            </div>
+            <div class="content">
+              <div class="area">千代田 · CHIYODA</div>
+              <h3>日枝神社</h3>
+              <div class="romaji">HIE JINJA</div>
+              <p>江戸の守り神。都会の森に佇む、徳川将軍家ゆかりの荘厳な神社。</p>
+              <span class="link">詳しく見る <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <a href="kyu-yasuda.html" class="spot-card reveal">
+            <div class="img-wrapper">
+              <img src="assets/yasuda.jpg" alt="旧安田庭園">
+              <div class="tag nature">自然 · Nature</div>
+              <div class="number">02</div>
+            </div>
+            <div class="content">
+              <div class="area">墨田 · SUMIDA</div>
+              <h3>旧安田庭園</h3>
+              <div class="romaji">KYU-YASUDA GARDEN</div>
+              <p>江戸大名庭園の風情を今に伝える、スカイツリーを望む静かなオアシス。</p>
+              <span class="link">詳しく見る <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </a>
+
+          <a href="takeshita.html" class="spot-card reveal">
+            <div class="img-wrapper">
+              <img src="assets/takeshita.jpg" alt="竹下通り">
+              <div class="tag trend">トレンド · Trend</div>
+              <div class="number">03</div>
+            </div>
+            <div class="content">
+              <div class="area">原宿 · HARAJUKU</div>
+              <h3>竹下通り</h3>
+              <div class="romaji">TAKESHITA STREET</div>
+              <p>世界に誇る、日本のポップカルチャーとKawaii文化の発信地。</p>
+              <span class="link">詳しく見る <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section" id="timeline">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">— Story</div>
+          <h2>東京、500年の物語</h2>
+          <p class="section-sub">江戸という小さな漁村から、世界の首都へ</p>
+        </div>
+
+        <div class="timeline">
+          <div class="t-item reveal">
+            <div class="t-year">1457</div>
+            <h4>江戸城築城</h4>
+            <p>太田道灌が江戸城を築き、街の歴史が始まる。</p>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-year">1603</div>
+            <h4>江戸幕府開府</h4>
+            <p>徳川家康が幕府を開き、のちに人口100万を超える世界最大級の都市へ発展。</p>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-year">1868</div>
+            <h4>東京と改称</h4>
+            <p>明治維新により江戸は「東京」となり、近代化の中心地に。</p>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-year">1964</div>
+            <h4>東京オリンピック</h4>
+            <p>新幹線とともに、戦後復興のシンボルとして世界に再登場。</p>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-year">2026</div>
+            <h4>そして、今</h4>
+            <p>伝統と未来が共存し続ける、世界で最も多面的な都市のひとつ。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">— Moments</div>
+          <h2>東京の表情</h2>
+          <p class="section-sub">歩いて、見て、感じる — 街の小さな瞬間たち</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="g-item tall reveal"><img src="https://images.unsplash.com/photo-1554797589-7241bb691973?w=900&q=80" alt=""></div>
+          <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&q=80" alt=""></div>
+          <div class="g-item wide reveal"><img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200&q=80" alt=""></div>
+          <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?w=600&q=80" alt=""></div>
+          <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600&q=80" alt=""></div>
+          <div class="g-item wide reveal"><img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1200&q=80" alt=""></div>
+          <div class="g-item tall reveal"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80" alt=""></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY TOKYO -->
+    <section class="why-tokyo" id="why">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">— Why Tokyo</div>
+          <h2>東京が特別な理由</h2>
+          <p class="section-sub">なぜ世界中の旅人が、何度も東京に戻ってくるのか。</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card reveal">
+            <div class="icon">🏯</div>
+            <h3>伝統と革新</h3>
+            <p>500年の神社仏閣と最先端の建築が、同じ街角で共存する唯一無二の風景。</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="icon">🍣</div>
+            <h3>世界一の食文化</h3>
+            <p>ミシュラン星付きの数は世界最多。屋台の一杯から最高の懐石まで、味の冒険が無限。</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="icon">🚅</div>
+            <h3>驚異の利便性</h3>
+            <p>分単位で正確な公共交通、清潔で安全な街。旅人にとっての最も親切な大都市。</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="icon">🌸</div>
+            <h3>四季の劇場</h3>
+            <p>桜、新緑、紅葉、雪。同じ場所が一年で4つの違う顔を見せてくれる。</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="icon">🎌</div>
+            <h3>23の小さな宇宙</h3>
+            <p>渋谷、浅草、銀座、谷中 — 隣り合う街が全く違う物語を持つ、層の街。</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="icon">✨</div>
+            <h3>細部への愛</h3>
+            <p>包装紙の折り方、お辞儀の角度、湯気の立ち方。「丁寧」が文化として息づく場所。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-strip">
+      <div class="container reveal">
+        <h2>さあ、旅をはじめよう。</h2>
+        <p>3つの東京。3つの物語。あなたはどこから歩きますか？</p>
+        <a href="#spots" class="btn-primary">スポットを見る <span class="arrow">→</span></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">東京案内書</a>
+            <p class="footer-subtitle">Tokyo Guide · 2026</p>
+            <p style="font-size:.92rem; max-width:280px; line-height:1.65;">A handcrafted guide for travelers who want to feel Tokyo, not just see it.</p>
+            <div class="socials">
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>探索する</h4>
+            <a href="hie-jinja.html">日枝神社</a>
+            <a href="kyu-yasuda.html">旧安田庭園</a>
+            <a href="takeshita.html">竹下通り</a>
+          </div>
+          <div class="footer-col">
+            <h4>東京について</h4>
+            <a href="#about">物語</a>
+            <a href="#timeline">歴史</a>
+            <a href="#why">魅力</a>
+          </div>
+          <div class="footer-col">
+            <h4>旅のヒント</h4>
+            <a href="#">季節の楽しみ方</a>
+            <a href="#">交通ガイド</a>
+            <a href="#">マナーとエチケット</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 東京案内書 — All Rights Reserved</p>
+          <p>Crafted with ❤ for fellow Tokyo lovers</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
